@@ -1,0 +1,7 @@
+- name: Setup base system
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+    - role: devroles.devel.ansible
+    - role: devroles.devel.oasis_work
