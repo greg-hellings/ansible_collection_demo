@@ -134,4 +134,42 @@ Once again, you can see the results [here](https://htmlpreview.github.io/?https:
 ## BONUS ROUND!
 ### Adding existing roles from Github to the collection
 
-TODO: Do this
+Before you go farther, you will need to have a clean git tree. This can be done by committing whatever
+you have in the collection so far. On the Vagrant VM you will need to set the global git config
+with your email and user name before making that commit
+
+```bash
+git config --global user.name "Greg Hellings"
+git config --global user.email greg.hellings@gmail.com
+```
+
+Say I have a role that already lives somewhere that I want to move into my new collection. Is
+there a way to do that efficiently? Well, since you asked! Some of these changes are very specific
+to our OASIS collections, and each role will require manually checking which parts of the molecule.yml
+file are edited, etc. However, the process is relatively straightforward and some parts of it are
+automated with the sanitize\_role.sh file that lives in this repository.
+
+```bash
+. ~/ansible-venv/bin/activate
+cd ~/ansible_collections/testing/tests
+git init . && git add . && git commit -m "First commit of test collection"
+# This command requires no uncommited changes
+git subtree add -P roles/users_and_groups https://github.com/oasis-roles/users_and_groups master
+# Removes lots of shared things all our roles have
+/vagrant/sanitize_role.sh
+# Edit the molecule files
+vi roles/users_and_groups/molecule/docker/molecule.yml
+# Remove things like the Github/Travis badge from the README.md file
+vi roles/users_and_groups/README.md
+# For MOST roles, these will be redundant, same with the ones in the openstack scenarios
+git rm roles/users_and_groups/molecule/docker/{create.yml,destroy.yml,Dockerfile.j2}
+# For this particular role, this file is empty, and that causes breakages
+git rm roles/users_and_groups/molecule/docker/tests/test_null.py
+tox -l
+tox -e users_and_groups-docker
+# Shows that all the history of the existing role lives in this repository, now
+git log
+```
+
+You can see a walkthrough of this by checking out my recording of it. As always, you can find it
+[here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/master/blob/05_ImportRole.html).
