@@ -22,7 +22,7 @@ could run for a while.
 
 `vagrant provision`
 
-See the output [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/01_SystemSetup.html)
+See the output [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/blob/master/01_SystemSetup.html)
 for the playbook run.
 
 ## Login to the system and clone the repositories
