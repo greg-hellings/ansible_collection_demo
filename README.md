@@ -34,7 +34,7 @@ git clone https://github.com/oasis-roles/ansible_collection_system system
 git clone https://github.com/oasis-roles/ansible_collection_osp osp
 ```
 
-The role oasis\_roles.system is now ready for use. See the steps executed [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/02_CloneRepos.html)
+The role oasis\_roles.system is now ready for use. See the steps executed [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/blob/master/02_CloneRepos.html)
 although it's not really much more than some git clones. Now here is what the home directory looks like
 under the ansible\_collections/ folder:
 
@@ -88,7 +88,7 @@ sudo su - someuser
 pwd
 ```
 
-Observe that the results can be seen [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/03_RunPlaybook.hml)
+Observe that the results can be seen [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/blob/master/03_RunPlaybook.hml)
 
 ## Create a new role or collection
 
@@ -129,7 +129,9 @@ tox -l
 tox -e test_role-docker
 ```
 
-Once again, you can see the results [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/04_CreateCollection.hml)
+Once again, you can see the results [here](https://htmlpreview.github.io/?https://github.com/greg-hellings/ansible_collection_demo/blob/master/04_CreateCollection.hml)
 
 ## BONUS ROUND!
 ### Adding existing roles from Github to the collection
+
+TODO: Do this
